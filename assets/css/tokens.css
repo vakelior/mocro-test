@@ -1,0 +1,78 @@
+/* ============ DESIGN TOKENS ============ */
+/*
+   MOCRO — Global Design System
+   Unified spacing + alignment system (invisible grid),
+   responsive across Desktop / Tablet / Mobile, RTL-safe.
+*/
+:root{
+  --color-bg:#ffffff;
+  --color-bg-soft:#f6f6f6;
+  --color-bg-inverse:#000000;
+  --color-surface:#0a0a0a;
+  --color-fg:#0a0a0a;
+  --color-fg-inverse:#ffffff;
+  --color-muted:#2a2a2a;
+  --color-muted-inverse:#999999;
+  --color-line:#e8e8e8;
+  --color-line-inverse:#262626;
+  --color-header-bg:rgba(255,255,255,.88);
+  --color-accent:#000000;
+  --color-accent-soft:rgba(0,0,0,.08);
+  --glass-bg:rgba(255,255,255,.04);
+  --glass-bg-strong:rgba(255,255,255,.06);
+  --glass-blur:blur(20px) saturate(160%);
+  --glass-border:rgba(0,0,0,.10);
+  --font-sans:'Al-Jazeera-Arabic',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --font-mono:'JetBrains Mono','SFMono-Regular',Consolas,monospace;
+  --text-xs:0.8125rem;
+  --text-sm:0.9375rem;
+  --text-base:1.0625rem;
+  --text-lg:1.1875rem;
+  --text-xl:1.375rem;
+  --text-2xl:1.6875rem;
+  --text-3xl:clamp(1.875rem,4.5vw,3rem);
+  --text-4xl:clamp(2.25rem,5vw,3.5rem);
+  --text-hero:clamp(2.25rem,6vw,4.5rem);
+  /* Unified 4-tier type scale — every text maps to one of these */
+  --fs-2:clamp(1.0625rem,1.562vw,1.25rem);    /* النص الأساسي + روابط التنقل  17→20px */
+  --fs-3:clamp(1.1875rem,1.875vw,1.5rem);     /* عناوين فرعية   19→24px */
+  --fs-4:clamp(1.625rem,3.281vw,2.625rem);    /* عناوين رئيسية  26→42px */
+  /* Icon scale — icons lead the text scale slightly so they read clearly at every size */
+  --icon-sm:clamp(1rem,1.562vw,1.25rem);       /* 16→20px — ميتا */
+  --icon-md:clamp(1.25rem,1.875vw,1.5rem);     /* 20→24px — نص أساسي */
+  --icon-lg:clamp(1.5rem,2.188vw,1.75rem);     /* 24→28px — عناوين */
+  --sp-1:0.25rem;
+  --sp-2:0.5rem;
+  --sp-3:0.75rem;
+  --sp-4:1rem;
+  --sp-5:1.5rem;
+  --sp-6:2rem;
+  --sp-7:2.5rem;
+  --sp-8:3rem;
+  --sp-9:4rem;
+  --sp-10:5rem;
+  --max-width:1240px;
+  --content-width:760px;
+  --gutter:clamp(1rem,3vw,2rem);
+  --section-gap:clamp(2.5rem,6vw,4rem);
+  --space-1:0.25rem;
+  --space-2:0.5rem;
+  --space-3:0.75rem;
+  --space-4:1rem;
+  --space-5:1.5rem;
+  --space-6:2rem;
+  --space-8:3rem;
+  --space-12:4.5rem;
+  --space-16:6rem;
+  --ink:#000000;
+  --ink-fg:#ffffff;
+  --ink-fg-muted:#a3a3a3;
+  --ink-line:#262626;
+  --ease:cubic-bezier(.22,1,.36,1);
+  --duration-fast:.2s;
+  --duration:.35s;
+  --duration-slow:.6s;
+  --radius-sm:0px;
+  --radius-md:0px;
+  --radius-full:0px;
+}
