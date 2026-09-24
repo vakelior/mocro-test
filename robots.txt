@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mocro.co/sitemap.xml
+Sitemap: https://mocro.co/news-sitemap.xml
+
+IndexNow: https://mocro.co/c8f190e25b34458e9ad71e16f3d942b0.txt
