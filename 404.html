@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<base href="/mocro-test/">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مُوكْرُو — منصة الأخبار العربية</title>
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="assets/css/fonts.css">
+<link rel="stylesheet" href="assets/css/tokens.css?v=4">
+<link rel="stylesheet" href="assets/css/base.css?v=2">
+<link rel="stylesheet" href="assets/css/components.css?v=17">
+<link rel="stylesheet" href="assets/css/layout.css?v=12">
+<link rel="stylesheet" href="assets/css/pages.css?v=28">
+</head>
+<body>
+<a href="#main" class="skip-link">تخطّى إلى المحتوى</a>
+<header class="mocro-header" id="top">
+  <div class="masthead">
+    <div class="container masthead-inner">
+      <a href="index.html" class="brand" aria-label="مُوكْرُو — الصفحة الرئيسية">مُوكْرُو</a>
+      <nav class="nav-desktop" aria-label="التنقل الرئيسي">
+        <div class="nav-item has-sub">
+          <button class="nav-link nav-trigger" aria-haspopup="true" aria-expanded="false">الأقسام <svg class="icon nav-caret" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="submenu" role="menu" id="nav-categories-desktop"></div>
+        </div>
+      </nav>
+      <div class="masthead-actions">
+        <button class="burger" data-burger aria-label="فتح القائمة" aria-expanded="false" aria-controls="mobile-menu"><span></span></button>
+      </div>
+    </div>
+    <nav class="mobile-menu" id="mobile-menu" aria-label="قائمة الجوال" aria-hidden="true">
+      <div class="menu-search">
+        <div class="search-field">
+          <svg class="icon search-field-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>
+          <input type="text" class="search-input" id="menu-search-input" placeholder="ابحث" autocomplete="off">
+        </div>
+        <div class="search-results" id="menu-search-results"></div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div id="article-root"></div>
+  <div class="container page-head" id="page-head" style="display:none"></div>
+  <div class="listing container" id="listing-wrap" style="display:none"><div class="listing-grid" id="listing-grid"></div></div>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/api.js"></script>
+<script src="assets/js/main.js?v=4"></script>
+<script src="assets/js/search.js"></script>
+<script src="assets/js/shared.js?v=1"></script>
+<script>
+/* SPA router for GitHub Pages: /article/:slug and /category/:slug */
+(function () {
+  'use strict';
+  function route() {
+    var path = window.location.pathname;
+    var segs = path.split('/').filter(Boolean);
+    var kind = null;
+    var idx = -1;
+    for (var i = 0; i < segs.length; i++) {
+      if (segs[i] === 'article' || segs[i] === 'category') { kind = segs[i]; idx = i; break; }
+    }
+    if (!kind || idx < 0 || idx === segs.length - 1) {
+      window.location.replace('index.html');
+      return;
+    }
+    var slug = segs[idx + 1];
+    if (!slug) { window.location.replace('index.html'); return; }
+    var s = document.createElement('script');
+    if (kind === 'article') {
+      document.title = 'مُوكْرُو — مقال';
+      s.src = 'assets/js/article.js?v=16';
+    } else {
+      document.title = 'مُوكْرُو — قسم';
+      var ph = document.getElementById('page-head');
+      var lw = document.getElementById('listing-wrap');
+      if (ph) ph.style.display = '';
+      if (lw) lw.style.display = '';
+      if (ph && !ph.querySelector('h1')) {
+        ph.innerHTML = '<h1 class="skeleton" style="height:2.2rem;width:40%"></h1><div class="page-desc skeleton" style="height:1rem;width:60%;margin-top:.75rem"></div>';
+      }
+      s.src = 'assets/js/category.js?v=5';
+    }
+    document.body.appendChild(s);
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', route);
+  } else {
+    route();
+  }
+})();
+</script>
+</body>
+</html>
